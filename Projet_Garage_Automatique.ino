@@ -15,6 +15,10 @@ NewPing sonar_in(TRIGGER_PIN_IN, ECHO_PIN_IN, MAX_DISTANCE);
 //Servomoteur
 Servo myservo;
 
+//Infrarouge
+int IR_SENSOR = 2;
+
+
 //Led RGB
 int redPin;
 int greenPin;
@@ -30,6 +34,7 @@ void setup() {
   mySerial.begin(57600);// Initialisation de la communication avec le capteur à 57600 bauds
   myservo.attach(9);
   myservo.write(0);
+  pinMode(IR_SENSOR, INPUT);
 
   redPin=3;
   greenPin=6;
@@ -63,7 +68,6 @@ void loop() {
   //Attente de sortie de la voiture
   sortieGarage();
 }
-
 
 
 
@@ -150,7 +154,7 @@ void fermetureGarage() {
   analogWrite(bluePin, 255);
   for(int pos = 90; pos >= 0; pos--) {
     myservo.write(pos);
-    delay(10);
+    delay(10); 
   }
   delay(3000);
   
@@ -182,19 +186,29 @@ void sortieGarage() {
   Serial.println("Attente de la sortie du véhicule...");
 
   // Attente que la voiture soit détectée à l'intérieur (distance < 15 cm)
-  while (sonar_in.ping_cm() <= 15 && sonar_in.ping_cm() > 0) {
+  while (sonar_in.ping_cm() <= 10 && sonar_in.ping_cm() > 0) {
     delay(100);
   }
 
   Serial.println("Voiture en mouvement ! Ouverture de la porte...");
   ouvertureGarage(); 
-
   
-  while (sonar_in.ping_cm() < 50 && sonar_in.ping_cm() > 0) {
+  while (sonar_in.ping_cm() < 10 && sonar_in.ping_cm() > 0) {
     Serial.println("Véhicule en train de sortir...");
     delay(500);
   }
 
-  fermetureGarage();  
+  while (digitalRead(IR_SENSOR) == LOW) {  // Certains capteurs IR renvoient LOW lorsqu'un objet est détecté
+    Serial.println("Objet détecté !");
+    myservo.write(90);
+  }
+  delay(3000);
+  Serial.println("Pas d'objet.");
+  for(int pos = 90; pos >= 0; pos--) {
+    myservo.write(pos);
+    delay(10); 
+  }
 }
+
+
 
