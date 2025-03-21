@@ -18,7 +18,6 @@ Servo myservo;
 //Infrarouge
 int IR_SENSOR = 2;
 
-
 //Led RGB
 int redPin;
 int greenPin;
@@ -69,10 +68,6 @@ void loop() {
   sortieGarage();
 }
 
-
-
-
-
 //Fonction d'enregistrement d'une empreinte
 void enregistrerEmpreinte(int id) {
   Serial.print("Enregistrement de l'empreinte ID : ");
@@ -120,7 +115,7 @@ void detecterEmpreinte() {
           
           if (finger.fingerID == 1) {  // Si l'ID correspond
             Serial.println("Accès autorisé !");
-            return;  // Sort de la fonction et permet au reste du programme de s'exécuter
+            return; 
           } else {
             Serial.println("Accès refusé !");
           }
@@ -198,7 +193,7 @@ void sortieGarage() {
     delay(500);
   }
 
-  while (digitalRead(IR_SENSOR) == LOW) {  // Certains capteurs IR renvoient LOW lorsqu'un objet est détecté
+  while (digitalRead(IR_SENSOR) == LOW) {  // Lorsqu'un objet est détécté, le capteur infrarouge renvoie LOW 
     Serial.println("Objet détecté !");
     myservo.write(90);
   }
