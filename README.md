@@ -19,6 +19,8 @@ Ce projet, développé en C++ avec l'Arduino IDE, permet de contrôler automatiq
 ```bash
 Adafruit_Fingerprint
 Servo
+NewPing.h
+SoftwareSerial.h
 ```
 4.Connectez votre Arduino et téléversez le code.
    
