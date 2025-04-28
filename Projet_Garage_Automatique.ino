@@ -188,16 +188,17 @@ void sortieGarage() {
   Serial.println("Voiture en mouvement ! Ouverture de la porte...");
   ouvertureGarage(); 
   
-  while (sonar_in.ping_cm() < 10 && sonar_in.ping_cm() > 0) {
+  while (sonar_in.ping_cm() < 15 && sonar_in.ping_cm() > 0) {
     Serial.println("Véhicule en train de sortir...");
     delay(500);
   }
+  delay(1000);
 
   while (digitalRead(IR_SENSOR) == LOW) {  // Lorsqu'un objet est détécté, le capteur infrarouge renvoie LOW 
     Serial.println("Objet détecté !");
     myservo.write(90);
   }
-  delay(3000);
+  delay(2000);
   Serial.println("Pas d'objet.");
   for(int pos = 90; pos >= 0; pos--) {
     myservo.write(pos);
