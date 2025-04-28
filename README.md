@@ -3,6 +3,10 @@
 ## Description
 Ce projet, développé en C++ avec l'Arduino IDE, permet de contrôler automatiquement une porte de garage à l’aide d’un capteur d’empreinte digitale et de capteur infrarouge pour plus de sécurité. Il vise à simplifier la gestion des entrées et sorties de véhicules tout en assurant une authentification sécurisée.
 
+<p align="center">
+  <img src="image/photo3.jpeg" />
+</p>
+
 ## Fonctionnalités
 - Gestion des entrées et des sorties des véhicules
 - Capteur d'empreinte digitale
