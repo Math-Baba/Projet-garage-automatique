@@ -7,6 +7,14 @@ Ce projet, développé en C++ avec l'Arduino IDE, permet de contrôler automatiq
   <img src="image/photo3.jpeg" />
 </p>
 
+## Composants
+- Arduino Uno
+- Infrared Reflection Sensor Module (IR Sensor)
+- Optical Fingerprint Sensor (Grove Fingerprint Sensor)
+- Standard Servo Motor
+- Ultrasonic Distance Sensor (HC-SR04)
+- LED RGB
+
 ## Fonctionnalités
 - Gestion des entrées et des sorties des véhicules
 - Capteur d'empreinte digitale
