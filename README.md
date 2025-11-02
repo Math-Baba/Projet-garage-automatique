@@ -22,6 +22,7 @@ Ce projet, développé en C++ avec l'Arduino IDE, permet de contrôler automatiq
 
 ## Installation
 1. Clonez le dépôt :
+   
    ```bash
    git clone https://github.com/Math-Baba/Projet-garage-automatique.git
    ```
